@@ -3,6 +3,8 @@ Tired of doing boring and repetitive math work? My program automates this work b
 This program is a solution for the '2 Circle 1 Square' question on Youtube (src: https://www.youtube.com/watch?v=qOOnBTaHG_Q)
 
 Input: 
+
+
 ![input_2c](https://github.com/mynoveldownloads/2-Circle-1-Square/assets/129578538/dbf169d2-b9ec-43d4-8a58-4d717afdf43b)
 
 
