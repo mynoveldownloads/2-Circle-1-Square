@@ -1,14 +1,16 @@
 from tkinter import *
-from math import *
+from math import sqrt
+from PyDesmos import Graph
+
 
 # Credits for reference
 # Stackoverflow copied code (src: https://stackoverflow.com/questions/59838116/how-to-input-use-float-through-entry-box-tkinter-python)
 # 2 Circle 1 Square on Youtube (src: https://www.youtube.com/watch?v=qOOnBTaHG_Q)
+# PyDesmos integration (src: https://pypi.org/project/PyDesmos/)
 
 # --- Calculation function ---
-def circle_sq(input_radius): 
-    
-    # Finding length of square inside 2 identical 
+def circle_sq(input_radius):
+    # Finding length of square inside 2 identical
     # circles with a given radius of the circle
 
     a = 5
@@ -28,15 +30,41 @@ def calculate():
     # Testing for errors
     try:
         result = circle_sq(input_radius.get())
+        desmos(input_radius.get(), result)
     except Exception as ex:
         # If input value is not a number, throws error
         print(ex)
         result = 'error'
-    
+
     # Outputs square length, else error statement
     output_value.set(result)
 
 
+
+# --- Desmos visual proof --- -> GPT-assisted code (structure)
+def desmos(input_value, output_value):
+    graph = Graph()
+    pt_half = output_value / 2
+
+    circ_1 = f'(x - {input_value})^2 + (y - {input_value})^2 = {input_value}^2'
+    graph.append(circ_1)
+
+    circ_2 = f'(x + {input_value})^2 + (y - {input_value})^2 = {input_value}^2'
+    graph.append(circ_2)
+
+    pt_1 = f'({pt_half}, 0)'
+    graph.append(pt_1)
+
+    pt_2 = f'({pt_half}, {output_value})'
+    graph.append(pt_2)
+
+    pt_3 = f'(-{pt_half}, 0)'
+    graph.append(pt_3)
+
+    pt_4 = f'(-{pt_half}, {output_value})'
+    graph.append(pt_4)
+
+    graph.open()
 # --- Tkinter code ---
 
 # Initialising window, fixed size setting
@@ -53,7 +81,7 @@ output_value = DoubleVar()
 question = Label(window, text="Input radius:")
 question.grid(row=0, column=0)
 
-# Output label 
+# Output label
 output = Label(window, text="Result:")
 output.grid(row=1, column=0)
 
@@ -68,6 +96,7 @@ show_output.grid(row=1, column=1)
 # Button to call calculate() function and perform required task
 button = Button(window, text="Calculate", command=calculate)
 button.grid(row=2, column=1)
+
 
 # Run window
 window.mainloop()
