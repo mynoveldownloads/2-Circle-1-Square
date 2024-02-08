@@ -15,7 +15,7 @@ Output:
 
 
 
-[09-02-24] Desmos output
+[09-02-24] Automated Desmos output for visual proof
 
 
 ![2c1s desmos visual](https://github.com/mynoveldownloads/2-Circle-1-Square/assets/129578538/2a842087-4a3e-4f84-b540-020e69de7134)
@@ -25,4 +25,4 @@ Output:
 Prerequisites:
 - Python >= 3.10
 - Tkinter (pip install pytk in terminal)
-- PyDesmos (pip install pydesmos)
+- PyDesmos (pip install pydesmos in terminal)
